@@ -3,7 +3,9 @@ import matplotlib.pyplot as plt
 from plot_class import *
 from map_feature import *
 
+# Plot the decision boundary of the logistic regression algorithm
 def plot_decision_boundary(X, y, theta):
+    # Plot the data 
     plot_class(X[:,1:2], y)
 
     if (X.size[1] <= 3):
