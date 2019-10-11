@@ -1,21 +1,15 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from plot_class import *
 from map_feature import *
 
 # Plot the decision boundary of the logistic regression algorithm
-def plot_decision_boundary(X, y, theta):
-    # Plot the data 
-    plot_class(X[:,1:2], y)
+def plot_decision_boundary(theta, X, y):
 
-    if (X.size[1] <= 3):
-        x_points = [np.min(X[:, 1]) - 2, np.max(X[:, 1]) + 2]
-        y_points = (-1 / theta[2]) * (theta[1] * x_points) + theta[0]
-
+    if (X.shape[1] <= 3):
+        x_points = np.array([np.min(X[:, 1]), np.max(X[:, 1])])
+        y_points = - (theta[0] + (theta[1] * x_points)) / theta[2]
+        
         plt.plot(x_points, y_points)
-
-        plt.legend('Admitted', 'Not Admitted', 'Decision Boundary')
-        plt.axis([30, 100, 30, 100])
     else:
         u = np.linspace(-1, 1.5, 50)
         v = np.linspace(-1, 1.5, 50)

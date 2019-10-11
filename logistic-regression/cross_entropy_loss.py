@@ -3,8 +3,9 @@ from sigmoid import *
 
 # Cost function for logistic regression
 def cross_entropy_loss(theta, X, y):
-    m = X.shape[0]
-    y = y.reshape((100,1))
+    m, n = X.shape
+    y = y.reshape((m, 1))
+    theta = theta.reshape((n, 1))
     h = sigmoid(np.dot(X, theta))
     J = np.sum(-y * np.log(h) - (1 - y) * np.log(1 - h)) / m
 
@@ -12,8 +13,9 @@ def cross_entropy_loss(theta, X, y):
 
 # Gradient of the loss function
 def cross_entropy_gradient(theta, X, y):
-    m = X.shape[0]
-    y = y.reshape((100,1))
+    m, n = X.shape
+    y = y.reshape((m, 1))
+    theta = theta.reshape((n, 1))
     h = sigmoid(np.dot(X, theta))
     grad = np.dot(np.transpose(X), h - y) / m
     grad = np.ndarray.flatten(grad)
