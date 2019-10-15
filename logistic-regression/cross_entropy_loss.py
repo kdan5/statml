@@ -1,7 +1,9 @@
 import numpy as np
 from sigmoid import *
 
-# Cost function for logistic regression
+'''
+Compute the cross entropy loss function
+'''
 def cross_entropy_loss(theta, X, y):
     m, n = X.shape
     y = y.reshape((m, 1))
@@ -11,7 +13,9 @@ def cross_entropy_loss(theta, X, y):
 
     return J
 
-# Gradient of the loss function
+'''
+Compute the gradient for the cross entropy loss function.
+'''
 def cross_entropy_gradient(theta, X, y):
     m, n = X.shape
     y = y.reshape((m, 1))
