@@ -2,7 +2,7 @@ import numpy as np
 from sigmoid import *
 
 '''
-Compute the cross entropy loss function
+Compute the cross entropy loss function.
 '''
 def cross_entropy_loss(theta, X, y):
     m, n = X.shape
@@ -12,6 +12,7 @@ def cross_entropy_loss(theta, X, y):
     J = np.sum(-y * np.log(h) - (1 - y) * np.log(1 - h)) / m
 
     return J
+
 
 '''
 Compute the gradient for the cross entropy loss function.

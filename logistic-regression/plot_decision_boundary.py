@@ -2,7 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from map_feature import *
 
-# Plot the decision boundary of the logistic regression algorithm
+'''
+Plot the decision boundary of the logistic regression algorithm.
+'''
 def plot_decision_boundary(theta, X, y):
 
     if (X.shape[1] <= 3):
@@ -16,8 +18,8 @@ def plot_decision_boundary(theta, X, y):
 
         z = np.zeros((len(u), len(v)))
 
-        for i in range(u):
-            for j in range(v):
+        for i in range(u.size):
+            for j in range(v.size):
                 z[i, j] = map_feature(u[i], v[j]) * theta
 
         plt.contour(u, v, z, [0,0], linewidth=2)

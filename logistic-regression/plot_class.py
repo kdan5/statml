@@ -1,7 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Plot 2-dimensional data that is split between two classes
+'''
+Plot 2-dimensional data that is split between two classes.
+Used as a shortcut for plotting data in binary logistic regression.
+'''
 def plot_class(X, y):
     # Identify the indices by their classification
     pos = np.where(y == 1)[0]
