@@ -16,13 +16,13 @@ def plot_decision_boundary(theta, X, y):
         u = np.linspace(-1, 1.5, 50)
         v = np.linspace(-1, 1.5, 50)
 
-        z = np.zeros((len(u), len(v)))
+        z = np.zeros((len(u),len(v)))
 
-        for i in range(u.size):
-            for j in range(v.size):
-                z[i, j] = map_feature(u[i], v[j]) * theta
+        for i in range(len(u)):
+            for j in range(len(v)):
+                z[i, j] = np.dot(map_feature(u[i], v[j], 6), theta)
 
-        plt.contour(u, v, z, [0,0], linewidth=2)
+        plt.contour(u, v, np.transpose(z), 0)
 
 
 
