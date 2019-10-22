@@ -1,5 +1,5 @@
 import numpy as np
-from sigmoid import *
+from sigmoid import sigmoid
 
 '''
 Compute the loss function for regularized cross entropy.
