@@ -2,6 +2,9 @@ import numpy as np
 import scipy.optimize as opt
 from cross_entropy_loss_reg import *
 
+'''
+Compute one-vs-all logistic regression to perform a multi-class classification.
+'''
 def one_vs_all(X, y, reg_lambda, K):
     m, n = X.shape
 
