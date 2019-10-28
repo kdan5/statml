@@ -11,7 +11,7 @@ def nn_cross_entropy_loss(params, input_layer_size, hidden_layer_size, labels, X
 
     a1 = np.concatenate((np.ones((m, 1)), X), -1)
     z2 = np.dot(a1, np.transpose(theta1))
-    a2 = np.concatenate((np.ones((m, 1)), sigmoid(z2), -1))
+    a2 = np.concatenate((np.ones((m, 1)), sigmoid(z2)), -1)
     z3 = np.dot(a2, np.transpose(theta2))
     a3 = sigmoid(z3)
 
