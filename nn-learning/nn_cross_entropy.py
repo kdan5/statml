@@ -27,19 +27,19 @@ def nn_cross_entropy(params, input_layer_size, hidden_layer_size, labels, X, y, 
 
     for t in range(m):
         a_1 = np.concatenate((np.ones((1, 1)), X[t, :].reshape(n, 1)))
-        print(a_1.shape)
-        z_2 = np.transpose(theta1) * a_1
-        print(z_2.shape)
+        z_2 = np.dot(theta1, a_1)
         a_2 = sigmoid(z_2)
         a_2 = np.concatenate((np.ones((1, 1)), a_2), 0)
-        z_3 = np.transpose(theta2) * a_2
+        z_3 = np.dot(theta2, a_2)
         a_3 = sigmoid(z_3)
-        
-        y_log = np.transpose(range(labels) == y[t])
+
+        y_log = np.transpose(range(labels) == y[t]).reshape((labels, 1))
         del_3 = a_3 - y_log
-        del_2 = np.multiply(theta2, del_3 * np.concatenate((np.ones((1, 1)), sigmoid_grad(z_2)), -1))
+        del_2 = np.dot(np.transpose(theta2), del_3) * np.concatenate((np.ones((1, 1)), sigmoid_grad(z_2)), 0)
         del_2 = del_2[1:]
-        theta1_grad = theta1_grad + del_2 * a_1
-        theta2_grad = theta2_grad + del_3 * a_2
+        theta1_grad = theta1_grad + del_2 * np.transpose(a_1)
+        theta2_grad = theta2_grad + del_3 * np.transpose(a_2)
+
+        p_prime = {'theta1_grad':theta1_grad, 'theta2_grad':theta2_grad}
 
     return J
